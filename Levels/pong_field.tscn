@@ -1,0 +1,58 @@
+[gd_scene load_steps=5 format=3 uid="uid://dph7oakfaduyw"]
+
+[ext_resource type="PackedScene" uid="uid://bl4bttk6wrhmy" path="res://paddle.tscn" id="1_ddd71"]
+[ext_resource type="Script" path="res://ball.gd" id="1_li8j6"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_d1h5i"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_ui8gb"]
+
+[node name="Pong Field" type="Node2D"]
+
+[node name="Polygon2D" type="Polygon2D" parent="."]
+
+[node name="Wall Top" type="StaticBody2D" parent="."]
+position = Vector2(577, 105)
+scale = Vector2(47.88, 1)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Wall Top"]
+shape = SubResource("RectangleShape2D_d1h5i")
+
+[node name="ColorRect" type="ColorRect" parent="Wall Top"]
+offset_left = -10.0
+offset_top = -10.0
+offset_right = 10.0
+offset_bottom = 10.0
+
+[node name="Wall Bottom" type="StaticBody2D" parent="."]
+position = Vector2(584, 608)
+scale = Vector2(47.88, 1)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Wall Bottom"]
+shape = SubResource("RectangleShape2D_d1h5i")
+
+[node name="ColorRect" type="ColorRect" parent="Wall Bottom"]
+offset_left = -10.0
+offset_top = -10.0
+offset_right = 10.0
+offset_bottom = 10.0
+
+[node name="Ball" type="CharacterBody2D" parent="."]
+position = Vector2(561, 356)
+script = ExtResource("1_li8j6")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Ball"]
+shape = SubResource("CircleShape2D_ui8gb")
+
+[node name="ColorRect" type="ColorRect" parent="Ball"]
+offset_left = -10.0
+offset_top = -10.0
+offset_right = 10.0
+offset_bottom = 10.0
+
+[node name="Paddle Left" parent="." instance=ExtResource("1_ddd71")]
+position = Vector2(50, 370)
+
+[node name="Paddle Right" parent="." instance=ExtResource("1_ddd71")]
+position = Vector2(1110, 357)
+location = 1
